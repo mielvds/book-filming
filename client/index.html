@@ -1,0 +1,75 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script src="js/jquery-1.7.1.min.js" type="text/javascript"></script>
+    <script src="js/client.js" type="text/javascript"></script>
+    <script src="js/jquery.simplemodal.1.4.4.min.js" type="text/javascript"></script>
+
+    <link href="css/style.css" type="text/css" rel="stylesheet" />
+  </head>
+  <body>
+
+    <div id="jobs">
+      <div id="epub" >
+        <form id="epub_upload" enctype="multipart/form-data" > <!--  action="/fileUpload" -->
+          <fieldset>
+            <legend>Add an EPUB file</legend>
+            <ol>
+              <li>
+                <label for="epub_input">EPUB3 file: </label>
+                <input id="epub_input" class="inputFile" type="file" > <!-- name="uploadingFile" is meaningless -->
+                <input id="epub_submit" class="inputSubmit" type="button" value="upload">
+              </li>
+              <li>
+                <label for="epub_name">Name: </label>
+                <input id="epub_name" class="inputName" type="text" />
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+      <div id="srt">
+        <form id="srt_upload" enctype="multipart/form-data"> <!--  action="/fileUpload" -->
+          <fieldset>
+            <legend>Add an SRT file</legend>
+            <ol>
+              <li>
+                <label for="mf_url">Media fragment URL: </label>
+                <input id="mf_url" class="inputName" type="text" />
+              </li>
+              <li>
+                <label for="srt_input">SRT file: </label>
+                <input id="srt_input" class="inputFile" type="file" > <!-- name="uploadingFile" is meaningless -->
+                <input id="srt_submit"class="inputSubmit" type="button" value="upload">
+              </li>
+              <li>
+                <label for="srt_name">Name: </label>
+                <input id="srt_name" class="inputMf" type="text" />
+              </li>
+            </ol>
+          </fieldset>
+        </form>
+      </div>
+
+      <form id="init" >
+        <fieldset>
+          <label for="job_name">Job name: </label>
+          <input id="job_name" class="inputName" type="text" />
+          <label for="start_button"></label>
+          <input id="start_button" class="startSubmit" type="button" value="start" /> 
+        </fieldset>
+      </form>
+    </div>
+    <div id="frame">
+      <div id="book" class="container"></div>
+      <div id="subtitle" class="container"></div>
+      <div id="player" class="container"></div>
+    </div>
+  </body>
+</html>
