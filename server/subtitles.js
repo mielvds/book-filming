@@ -7,21 +7,19 @@ exports.addSubtitle = function (req, res) {
     var targetPath = dir + file.name;
     dataAccess.addDocument('subtitles', function(document){
       parser.parseSRT(targetPath, 
-      function(sub){
-        dataAccess.updateDocument('subtitles', function(result){
-
+        function(sub){
+          dataAccess.updateDocument('subtitles', function(result){},
+            document._id.toString()
+            ,{
+              $push: {
+                'entries': sub
+              }
+            });
         },
-          document._id.toString()
-          ,{
-            $push: {
-              'entries': sub
-            }
-          })
-      },
-      function(){
-        res.header('Location', '/subtitles/' + file.name);
-        res.send(201,'Subtitle created');
-      });
+        function(){
+          res.header('Location', '/subtitles/' + file.name);
+          res.send(201,'Subtitle created');
+        });
     }, 
     {
       name: file.name, 

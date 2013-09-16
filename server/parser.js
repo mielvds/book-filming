@@ -56,14 +56,14 @@ exports.parseSRT = function(file, onSub, onEnd){
                 return HOUR * hours +
                 MINUTE * minutes +
                 SECOND * seconds +
-                milliSeconds
+                milliSeconds;
               }
               
               var sub = {
                 number: subNum,
                 startTime:parseTime(times[0]),
                 stopTime:parseTime(times[1]),
-                text:subText
+                text:S(subText).stripTags().s
               };
 
               subText     = '';
@@ -125,11 +125,16 @@ exports.parseEPUB = function(fileName, onChapter, onParagraph, onEnd){
             }
           },
           ontext: function(text){
-            paragraph.text += S(text).stripTags().s;
+            paragraph.text = S(text).stripTags().s;
+            var pattern = /[“"].*?[”"]/gm;
+            var matches = paragraph.text.match(pattern);
+
+            if (matches){
+                paragraph.quotes = matches;
+            }
           },
           onclosetag: function(tagname){
             if(tagname === "p"){
-              console.log(paragraph);
               onParagraph(paragraph);
             }
           }

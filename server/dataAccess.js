@@ -37,7 +37,6 @@ exports.findAll = function(collection,callback) {
   });
 };
 
-
  
 exports.addDocument = function(collection, callback, document) {
   //var document = req.body;

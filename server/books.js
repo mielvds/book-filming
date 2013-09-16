@@ -7,7 +7,7 @@ exports.addBook = function(req, res) {
     var targetPath = dir + file.name;
     dataAccess.addDocument('books', function(document){
       parser.parseEPUB(targetPath, 
-      function(chapter){
+        function(chapter){
         /*dataAccess.updateDocument('books', function(result){
 
         },
@@ -17,23 +17,22 @@ exports.addBook = function(req, res) {
               'entries': chapter
             }
           })*/
-      },
-      function(paragraph){
-        dataAccess.updateDocument('books', function(result){
-
         },
-          document._id.toString()
-          ,{
-            $push: {
-              'paragraphs': paragraph
-            }
-          })
-      }
-      ,
-      function(){
-        res.header('Location', '/books/' + file.name);
-        res.send(201,'Book created');
-      });
+        function(paragraph){
+          dataAccess.updateDocument('books', function(result){
+
+            },
+            document._id.toString()
+            ,{
+              $push: {
+                'paragraphs': paragraph
+              }
+            });
+        },
+        function(){
+          res.header('Location', '/books/' + file.name);
+          res.send(201,'Book created');
+        });
     }, 
     {
       name: file.name, 
@@ -49,6 +48,7 @@ exports.getBooks = function(req, res){
     res.send(items);
   });
 }
+
 
 exports.getBookById = function(req, res) {
   var id = req.params.id;

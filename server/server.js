@@ -2,7 +2,8 @@ var express = require('express'),
 mongodb = require('mongodb'),
 files = require('./files.js'),
 subtitles = require('./subtitles.js'),
-books = require('./books.js');
+books = require('./books.js'),
+syncer = require('./syncer.js');
 
 var app = express();
 
@@ -55,6 +56,8 @@ app.post('/books',books.addBook);
 //app.put('/books/:id/raw',function(req, res){
 //  upload.handle(req,res);
 //});
+
+app.get('/syncs/:book,:subtitle',syncer.synchronize)
 
 
 app.listen(3000);

@@ -18,10 +18,10 @@ root {
 #frame {
   width: 100%;
   height: 100%;
+  vertical-align: top;
 }
 
 #jobs {
-  
   margin: 2px 2px 2px 2px;
 }
 
@@ -45,10 +45,29 @@ label {
   width: 150px
 }
 
-#book #subtitle{
+#book, #subtitle{
   width: 30%;
+  display: inline-block;
+  border: #bbb solid 1px;
+}
+
+#book {
+  left: 0%;
+}
+
+#subtitle {
+  left: 30%;
+}
+
+#player {
+  right: 0%;
 }
 
 #player {
   width: 40%
+}
+
+
+.entry {
+  border-bottom: #bbb thin solid;
 }
